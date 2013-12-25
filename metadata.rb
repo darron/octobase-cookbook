@@ -6,3 +6,5 @@ license          'Apache 2.0'
 description      'Installs/configures something'
 version          '0.1.0'
 recipe           'octobase::default', 'Installs/configures something'
+
+depends 'apt'

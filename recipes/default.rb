@@ -18,4 +18,46 @@
 # limitations under the License.
 #
 
-# Install/configure something here
+package 'python-software-properties'
+
+package 'ntp'
+
+service 'ntp' do
+  provider Chef::Provider::Service::Upstart
+  action [:enable, :start]
+end
+
+package 'lynx-cur'
+
+bash 'update locale' do
+  user 'root'
+  cwd '/tmp'
+  command '/usr/sbin/update-locale'
+end
+
+remote_file node['octo']['path'] do
+  source node['octo']['url']
+  owner 'root'
+  group 'root'
+  mode 00750
+  action :create
+end
+
+template node['sudoers'] do
+  source 'sudoers.erb'
+  mode 0440
+  owner 'root'
+  group 'root'
+end
+
+template node['sshd']['config'] do
+  source 'sshd-config.erb'
+  mode 0644
+  owner 'root'
+  group 'root'
+end
+
+service 'ssh' do
+  provider Chef::Provider::Service::Upstart
+  action [:restart]
+end
