@@ -18,12 +18,16 @@ Defaults        env_keep+="SSH_AUTH_SOCK"
 
 # User privilege specification
 root    ALL=(ALL:ALL) ALL
+ubuntu ALL=(ALL) NOPASSWD:ALL
+vagrant ALL=(ALL) NOPASSWD:ALL
 
 # Members of the admin group may gain root privileges
-%admin ALL=(ALL) ALL
+# For Ubuntu 10.0.4 and vagrant.
+%admin ALL=NOPASSWD:ALL
 
 # Allow members of group sudo to execute any command
-%sudo   ALL=(ALL:ALL) ALL
+# For Ubuntu 12.0.4 and vagrant.
+%sudo   ALL=NOPASSWD:ALL
 
 # See sudoers(5) for more information on "#include" directives:
 

@@ -3,7 +3,8 @@ require 'spec_helper'
 
 # Write integration tests with Serverspec - http://serverspec.org/
 describe 'octobase::default' do
-  it 'does something' do
-    pending 'Replace this with meaningful tests'
+  describe service('ntp') do
+    it { should be_enabled }
+    it { should be_running }
   end
 end

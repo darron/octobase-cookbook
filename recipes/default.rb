@@ -23,7 +23,7 @@ package 'python-software-properties'
 package 'ntp'
 
 service 'ntp' do
-  provider Chef::Provider::Service::Upstart
+  supports status: true, restart: true
   action [:enable, :start]
 end
 
