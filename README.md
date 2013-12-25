@@ -6,7 +6,7 @@ Requirements
 
 ### Platform:
 
-Ubuntu 10.0.4LTS, 12.0.4LTS
+Ubuntu 12.0.4LTS
 
 ### Cookbooks:
 
