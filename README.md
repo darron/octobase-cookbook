@@ -1,4 +1,4 @@
-Skeleton Cookbook
+octobase Cookbook
 =================
 
 Requirements
@@ -6,23 +6,28 @@ Requirements
 
 ### Platform:
 
-*List supported platforms here*
+Ubuntu 10.0.4LTS, 12.0.4LTS
 
 ### Cookbooks:
 
-*List cookbook dependencies here*
+apt
 
 Attributes
 ----------
 
-*List attributes here*
+```
+default['octo']['url'] = 'https://raw.github.com/octohost/octohost/master/bin/octo'
+default['octo']['path'] = '/usr/bin/octo'
+default['sudoers'] = '/etc/sudoers'
+default['sshd']['config'] = '/etc/ssh/sshd_config'
+```
 
 Recipes
 -------
 
 ### octobase::default
 
-*Explain what the recipe does here*
+Sets up the base requirements for the octohost install.
 
 Testing
 -------
