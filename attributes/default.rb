@@ -22,3 +22,4 @@ default['octo']['url'] = 'https://raw.github.com/octohost/octohost/master/bin/oc
 default['octo']['path'] = '/usr/bin/octo'
 default['sudoers'] = '/etc/sudoers'
 default['sshd']['config'] = '/etc/ssh/sshd_config'
+default['ulimit'] = '64000'

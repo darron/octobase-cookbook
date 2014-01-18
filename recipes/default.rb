@@ -20,6 +20,17 @@
 
 include_recipe 'sysstat::default'
 
+bash 'update_ulimit' do
+  user 'root'
+  cwd '/tmp'
+  code <<-EOH
+    echo '* hard nofile #{node['ulimit']}' >> /etc/security/limits.conf
+    echo '* soft nofile #{node['ulimit']}' >> /etc/security/limits.conf
+    sysctl -w fs.file-max=#{node['ulimit']}
+    sysctl -p
+  EOH
+end
+
 remote_file node['octo']['path'] do
   source node['octo']['url']
   owner 'root'
