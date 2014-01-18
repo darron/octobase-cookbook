@@ -18,23 +18,6 @@
 # limitations under the License.
 #
 
-package 'python-software-properties'
-
-package 'ntp'
-
-service 'ntp' do
-  supports status: true, restart: true
-  action [:enable, :start]
-end
-
-package 'lynx-cur'
-
-bash 'update locale' do
-  user 'root'
-  cwd '/tmp'
-  command '/usr/sbin/update-locale'
-end
-
 remote_file node['octo']['path'] do
   source node['octo']['url']
   owner 'root'

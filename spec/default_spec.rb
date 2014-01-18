@@ -5,26 +5,6 @@ require 'spec_helper'
 describe 'octobase::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
-  it 'installs python-software-properties' do
-    expect(chef_run).to install_package('python-software-properties')
-  end
-
-  it 'installs ntp' do
-    expect(chef_run).to install_package('ntp')
-  end
-
-  it 'enables the ntp service' do
-    expect(chef_run).to enable_service('ntp')
-  end
-
-  it 'starts the ntp service' do
-    expect(chef_run).to start_service('ntp')
-  end
-
-  it 'installs lynx-cur' do
-    expect(chef_run).to install_package('lynx-cur')
-  end
-
   it 'grabs and installs octo' do
     expect(chef_run).to create_remote_file('/usr/bin/octo')
   end
