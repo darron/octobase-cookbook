@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+include_recipe 'sysstat::default'
+
 remote_file node['octo']['path'] do
   source node['octo']['url']
   owner 'root'

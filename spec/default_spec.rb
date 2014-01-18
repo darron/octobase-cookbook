@@ -5,6 +5,10 @@ require 'spec_helper'
 describe 'octobase::default' do
   let(:chef_run) { ChefSpec::Runner.new.converge(described_recipe) }
 
+  it 'includes the `sysstat` recipe' do
+    expect(chef_run).to include_recipe('sysstat::default')
+  end
+
   it 'grabs and installs octo' do
     expect(chef_run).to create_remote_file('/usr/bin/octo')
   end
