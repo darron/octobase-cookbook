@@ -24,4 +24,8 @@ describe 'octobase::default' do
   it 'restarts the ssh service with an explicit action' do
     expect(chef_run).to restart_service('ssh')
   end
+
+  it 'grabs and installs jq' do
+    expect(chef_run).to create_remote_file('/usr/bin/jq')
+  end
 end
