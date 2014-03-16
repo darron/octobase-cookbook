@@ -43,7 +43,7 @@ remote_file node['octo']['path'] do
   source node['octo']['url']
   owner 'root'
   group 'root'
-  mode 00750
+  mode 00755
   action :create
 end
 
