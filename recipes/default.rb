@@ -39,6 +39,14 @@ remote_file node['jq']['path'] do
   action :create
 end
 
+remote_file node['config']['path'] do
+  source node['config']['url']
+  owner 'root'
+  group 'root'
+  mode '00644'
+  action :create
+end
+
 remote_file node['octo']['path'] do
   source node['octo']['url']
   owner 'root'

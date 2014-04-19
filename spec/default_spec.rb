@@ -13,6 +13,10 @@ describe 'octobase::default' do
     expect(chef_run).to create_remote_file('/usr/bin/octo')
   end
 
+  it 'grabs and installs /etc/default/octohost' do
+    expect(chef_run).to create_remote_file('/etc/default/octohost')
+  end
+
   it 'updates /etc/sudoers' do
     expect(chef_run).to create_template('/etc/sudoers')
   end
