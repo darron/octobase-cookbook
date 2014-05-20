@@ -20,6 +20,8 @@
 
 default['octo']['url'] = 'https://raw.github.com/octohost/octohost/master/bin/octo'
 default['octo']['path'] = '/usr/bin/octo'
+default['octologs']['url'] = 'https://raw.github.com/octohost/octohost/master/config/log_files.yml'
+default['octologs']['path'] = '/etc/log_files.yml'
 default['config']['url'] = 'https://raw.github.com/octohost/octohost/master/bin/default'
 default['config']['path'] = '/etc/default/octohost'
 default['sudoers'] = '/etc/sudoers'

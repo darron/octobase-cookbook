@@ -55,6 +55,14 @@ remote_file node['octo']['path'] do
   action :create
 end
 
+remote_file node['octologs']['path'] do
+  source node['octologs']['url']
+  owner 'root'
+  group 'root'
+  mode 00755
+  action :create
+end
+
 template node['sudoers'] do
   source 'sudoers.erb'
   mode 0440
