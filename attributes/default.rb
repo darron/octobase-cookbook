@@ -29,3 +29,5 @@ default['sshd']['config'] = '/etc/ssh/sshd_config'
 default['ulimit'] = '64000'
 default['jq']['url'] = 'http://stedolan.github.io/jq/download/linux64/jq'
 default['jq']['path'] = '/usr/bin/jq'
+default['octohost']['base_dir'] = '/usr/local/octohost'
+default['octohost']['plugin_dir'] = "#{node['octohost']['base_dir']}/plugins"

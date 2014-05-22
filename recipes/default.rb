@@ -77,6 +77,31 @@ template node['sshd']['config'] do
   group 'root'
 end
 
+directory node['octohost']['base_dir'] do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  recursive true
+  action :create
+end
+
+directory node['octohost']['plugin_dir'] do
+  owner 'root'
+  group 'root'
+  mode '0755'
+  recursive true
+  action :create
+end
+
+package 'git' do
+ action :install
+end
+
+git "#{node['octohost']['plugin_dir']}/mysql" do
+  repository 'https://github.com/octohost/mysql-plugin.git'
+  action :sync
+end
+
 service 'ssh' do
   provider Chef::Provider::Service::Upstart
   action [:restart]

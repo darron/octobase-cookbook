@@ -32,4 +32,17 @@ describe 'octobase::default' do
   it 'grabs and installs jq' do
     expect(chef_run).to create_remote_file('/usr/bin/jq')
   end
+
+  it 'creates the /usr/local/octohost folder' do
+    expect(chef_run).to create_directory('/usr/local/octohost')
+  end
+
+  it 'creates the /usr/local/octohost/plugins folder' do
+    expect(chef_run).to create_directory('/usr/local/octohost/plugins')
+  end
+
+  it 'checks out the mysql plugin' do
+    expect(chef_run).to export_git('/usr/local/octohost/plugins/mysql')
+  end
+
 end
