@@ -94,7 +94,7 @@ directory node['octohost']['plugin_dir'] do
 end
 
 package 'git' do
- action :install
+  action :install
 end
 
 git "#{node['octohost']['plugin_dir']}/mysql" do
