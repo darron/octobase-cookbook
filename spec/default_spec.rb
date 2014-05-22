@@ -42,7 +42,7 @@ describe 'octobase::default' do
   end
 
   it 'checks out the mysql plugin' do
-    expect(chef_run).to export_git('/usr/local/octohost/plugins/mysql')
+    expect(chef_run).to sync_git('/usr/local/octohost/plugins/mysql')
   end
 
 end
