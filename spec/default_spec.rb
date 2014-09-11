@@ -45,4 +45,8 @@ describe 'octobase::default' do
     expect(chef_run).to sync_git('/usr/local/octohost/plugins/mysql')
   end
 
+  it 'installs the redis-copy.py program' do
+    expect(chef_run).to create_cookbook_file('/usr/local/bin/redis-copy.py')
+  end
+
 end

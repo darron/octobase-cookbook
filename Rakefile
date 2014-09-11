@@ -16,17 +16,12 @@ desc 'Run ChefSpec examples'
 RSpec::Core::RakeTask.new(:spec)
 
 desc 'Run all tests'
-task :test => [:cleanup_vendor, :lint, :food_extra, :spec, :tailor, :taste, :rubocop]
+task :test => [:cleanup_vendor, :lint, :food_extra, :spec, :tailor, :rubocop]
 task :default => :test
 
 desc 'Run tailor tests'
 task :tailor do
   sh 'bundle exec tailor *.rb ./**/*.rb ./**/**/**/**/*.rb'
-end
-
-desc 'Run taste tests'
-task :taste do
-  sh 'bundle exec taste'
 end
 
 desc 'Run rubocop tests'
@@ -45,7 +40,7 @@ task :berksintall do
 end
 
 desc 'Syntax check and build Vagrant box'
-task :build_vagrant => [:cleanup_vendor, :cleanup_vagrant, :lint, :spec, :tailor, :taste, :rubocop, :berksintall, :vagrantup]
+task :build_vagrant => [:cleanup_vendor, :cleanup_vagrant, :lint, :spec, :tailor, :rubocop, :berksintall, :vagrantup]
 task :vagrant => :build_vagrant
 
 task :vagrantup do
@@ -57,7 +52,7 @@ task :cleanup_vagrant do
 end
 
 desc 'Syntax check and build all Packer targets'
-task :build => [:cleanup_vendor, :lint, :spec, :tailor, :taste, :rubocop, :packer]
+task :build => [:cleanup_vendor, :lint, :spec, :tailor, :rubocop, :packer]
 
 task :packer => [:cleanup_vendor, :packer_build]
 
@@ -66,7 +61,7 @@ task :packer_build do
 end
 
 desc 'Syntax check and build AMI'
-task :build_ami => [:cleanup_vendor, :lint, :spec, :tailor, :taste, :rubocop, :packer_ami]
+task :build_ami => [:cleanup_vendor, :lint, :spec, :tailor, :rubocop, :packer_ami]
 
 task :packer_ami => [:cleanup_vendor, :packer_build_ami]
 
@@ -75,7 +70,7 @@ task :packer_build_ami do
 end
 
 desc 'Syntax check and build Droplet'
-task :build_droplet => [:cleanup_vendor, :lint, :spec, :tailor, :taste, :rubocop, :packer_droplet]
+task :build_droplet => [:cleanup_vendor, :lint, :spec, :tailor, :rubocop, :packer_droplet]
 
 task :packer_droplet => [:cleanup_vendor, :packer_build_droplet]
 
@@ -84,7 +79,7 @@ task :packer_build_droplet do
 end
 
 desc 'Syntax check and build Openstack Image'
-task :build_openstack => [:cleanup_vendor, :lint, :spec, :tailor, :taste, :rubocop, :packer_openstack]
+task :build_openstack => [:cleanup_vendor, :lint, :spec, :tailor, :rubocop, :packer_openstack]
 
 task :packer_openstack => [:cleanup_vendor, :packer_build_openstack]
 
@@ -93,7 +88,7 @@ task :packer_build_openstack do
 end
 
 desc 'Syntax check and build Google Compute Image'
-task :build_gce => [:cleanup_vendor, :lint, :spec, :tailor, :taste, :rubocop, :packer_gce]
+task :build_gce => [:cleanup_vendor, :lint, :spec, :tailor, :rubocop, :packer_gce]
 
 task :packer_gce => [:cleanup_vendor, :packer_build_gce]
 
@@ -106,11 +101,11 @@ task :convert_gce do
   sh 'openssl pkcs12 -in google.p12 -nocerts -passin pass:notasecret -nodes -out google.pem'
 end
 
-desc 'Usage: rake knife_solo user={user} ip={ip.address.goes.here}'
+desc "Usage: rake knife_solo user={user} ip={ip.address.goes.here}"
 task :knife_solo do
   sh 'rm -rf cookbooks && rm -rf nodes'
   sh 'mkdir cookbooks && berks install --path cookbooks'
-  sh "mkdir nodes && echo '{\'run_list\':[\'apache2::default\']}' > nodes/#{ENV['ip']}.json"
+  sh "mkdir nodes && echo '{\"run_list\":[\"octobase::default\"]}' > nodes/#{ENV['ip']}.json"
   sh "bundle exec knife solo bootstrap #{ENV['user']}@#{ENV['ip']}"
 end
 

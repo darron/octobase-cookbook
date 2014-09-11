@@ -106,3 +106,22 @@ service 'ssh' do
   provider Chef::Provider::Service::Upstart
   action [:restart]
 end
+
+apt_package 'python-setuptools' do
+  action :install
+end
+
+cookbook_file '/usr/local/bin/redis-copy.py' do
+  source 'redis-copy.py'
+  owner 'root'
+  group 'root'
+  mode '0644'
+end
+
+easy_install_package 'redis' do
+  action :install
+end
+
+apt_package 'redis-tools' do
+ action :install
+end
