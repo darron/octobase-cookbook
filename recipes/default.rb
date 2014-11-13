@@ -125,3 +125,11 @@ end
 apt_package 'redis-tools' do
  action :install
 end
+
+package 'unzip' do
+ action :install
+end
+
+package 'curl' do
+ action :install
+end
