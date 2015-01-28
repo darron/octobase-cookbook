@@ -1,12 +1,10 @@
 source 'https://rubygems.org'
 
-gem 'berkshelf', '~> 3.1'
-gem 'chefspec', '~> 4.0'
+gem 'berkshelf', '~> 3.2'
+gem 'chefspec', '~> 4.1'
 gem 'foodcritic', '~> 4.0.0'
 gem 'rake', '>= 10.2'
-gem 'rubocop', '= 0.24.1'
-gem 'tailor'
-gem 'chef-sugar'
+gem 'rubocop', '= 0.27.1'
 gem 'knife-solo'
 
 group :integration do
@@ -18,4 +16,5 @@ group :integration do
   gem 'guard-rubocop', '>= 1.1'
   gem 'test-kitchen'
   gem 'kitchen-vagrant'
+  gem 'chef-sugar'
 end

@@ -123,13 +123,13 @@ easy_install_package 'redis' do
 end
 
 apt_package 'redis-tools' do
- action :install
+  action :install
 end
 
 package 'unzip' do
- action :install
+  action :install
 end
 
 package 'curl' do
- action :install
+  action :install
 end
