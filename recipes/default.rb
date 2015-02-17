@@ -133,3 +133,17 @@ end
 package 'curl' do
   action :install
 end
+
+service 'ntp' do
+  supports status: true, restart: true
+  action [:nothing]
+end
+
+file '/etc/default/ntp' do
+  owner 'root'
+  group 'root'
+  mode 00644
+  action :create
+  content "NTPD_OPTS='-g -U 0'"
+  notifies :restart, 'service[ntp]', :delayed
+end

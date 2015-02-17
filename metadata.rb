@@ -4,7 +4,7 @@ maintainer       'Darron Froese'
 maintainer_email 'darron@froese.org'
 license          'Apache 2.0'
 description      'Installs/configures some basic octohost items.'
-version          '0.14.0'
+version          '0.14.1'
 recipe           'octobase::default', 'Installs/configures some basic octohost items.'
 
 depends 'apt'
