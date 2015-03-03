@@ -118,6 +118,9 @@ cookbook_file '/usr/local/bin/redis-copy.py' do
   mode '0644'
 end
 
+# Because of this bug: https://github.com/chef/chef/issues/3011
+Chef::Provider::Package.include Chef::Mixin::Command
+
 easy_install_package 'redis' do
   action :install
 end
@@ -133,6 +136,8 @@ end
 package 'curl' do
   action :install
 end
+
+package 'ntp'
 
 service 'ntp' do
   supports status: true, restart: true
